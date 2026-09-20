@@ -1,0 +1,12 @@
+clean_genre,total_games,avg_price,retention_ratio,avg_positive_pct
+Adventure,13766,11.33,195.38,79.91
+RPG,6376,12.99,126.43,79.39
+Sports,1391,15.14,119.03,76.63
+Strategy,6242,12.37,115.11,79.07
+Casual,12442,8.65,96.11,81.47
+Simulation,7478,12.34,94.21,76.14
+Massively Multiplayer,455,11.03,87.12,67.17
+Indie,22108,9.08,86.72,81.01
+Action,12301,11.59,74.81,79.64
+Early Access,2595,11.53,67.31,77.09
+Racing,1103,13.07,57.24,77.39

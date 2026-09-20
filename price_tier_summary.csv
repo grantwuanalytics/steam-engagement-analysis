@@ -1,0 +1,6 @@
+custom_price_tier,total_games,avg_peak_ccu,mean_hours_played,hype_ratio,retention_ratio,avg_positive_pct
+1. Micro / Impulse (< $5),19878,11,61.73,0.0085,32.01,75.79
+2. Indie Core ($5 - $14.99),19637,29,130.66,0.014,64.05,78.8
+3. Lower Mid ($15 - $29.99),7601,135,350.01,0.03,143.49,79.23
+4. Mid-Tier ($30 - $54.99),1215,851,770.73,0.0582,73.57,78.65
+5. Premium / AAA ($55+),428,1184,1031.65,0.0475,44.97,68.8
