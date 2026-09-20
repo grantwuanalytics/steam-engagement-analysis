@@ -10,7 +10,7 @@ An end-to-end data analytics project evaluating player engagement, pricing dynam
 
 ## Interactive Dashboard
 
-> **[View Interactive Dashboard on Tableau Public](YOUR_TABLEAU_PUBLIC_URL_HERE)**
+> **[View Interactive Dashboard on Tableau Public](https://github.com/grantwuanalytics/steam-engagement-analysis)**
 
 ### Key Visualizations
 
