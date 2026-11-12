@@ -1,63 +1,130 @@
-![Tableau Public Dashboard](https://img.shields.io/badge/Tableau_Public-Interactive_Dashboard-orange?style=for-the-badge&logo=tableau)
-![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python)
-![SQL](https://img.shields.io/badge/SQL-Data_Cleaning-lightgrey?style=for-the-badge&logo=sql)
+# Steam Market Strategy | Pricing & Genre Opportunities
+
+**An end-to-end data analytics project using SQL, Python, and Tableau to identify pricing opportunities, evaluate player engagement, and inform game development and portfolio strategies.**
+
+[![Tableau Public](https://img.shields.io/badge/Tableau_Public-Interactive_Dashboard-orange?style=for-the-badge&logo=tableau)](https://public.tableau.com/views/SteamMarketStrategyPricingGenreOpportunities/Dashboard2)
+![Python](https://img.shields.io/badge/Python-EDA-blue?style=for-the-badge&logo=python)
+![SQL](https://img.shields.io/badge/SQL-Analysis-lightgrey?style=for-the-badge)
 
 ## Executive Summary
 
-An end-to-end data analytics project evaluating player engagement, pricing dynamics, and genre retention performance across the Steam gaming catalog. Built as an interactive executive dashboard to inform monetization and portfolio strategies.
+This project analyzes 48,759 Steam games to explore relationships between game pricing, player engagement, and user satisfaction across different price tiers and genres.
 
----
+Using SQL for data preparation and querying, Python for exploratory data analysis, and Tableau for visualization, I developed an interactive dashboard that translates market patterns into business recommendations for game developers.
 
-## Interactive Dashboard
+**Key finding:** Games priced between $15 and $30 demonstrate the highest engagement ratio (143.5) while maintaining approximately 79% positive user reviews, suggesting a promising segment for further pricing research.
 
-> **[View Interactive Dashboard on Tableau Public](https://github.com/grantwuanalytics/steam-engagement-analysis)**
+## Interactive Tableau Dashboard
 
-### Key Visualizations
+### [View the Live Tableau Dashboard](https://public.tableau.com/views/SteamMarketStrategyPricingGenreOpportunities/Dashboard2)
 
-1. **KPI Banner**: High-level catalog metrics tracking total game footprint and baseline average price points.
-2. **Price Tier Engagement Analysis**: Bar chart breakdown comparing average player hours across price buckets ($0 to $30+).
-3. **Genre Retention Matrix**: Scatter plot matrix positioning genres by retention ratio against positive user rating percentages.
+The dashboard presents a market-level overview of Steam game pricing, engagement, and user satisfaction.
 
----
+**Dashboard Features:**
 
-## Data Pipeline & Architecture
+- **Market Overview:** 48,759 games analyzed, with an average price of $10.66.
+- **Pricing Opportunities:** Comparison of engagement ratios across five price segments, highlighting the $15–$30 segment.
+- **Genre Opportunities & Risks:** Scatterplot comparing genre-level engagement ratios and positive review percentages.
+- **Interactive Exploration:** Hover tooltips provide additional metrics, including engagement ratios, review sentiment, and game counts.
+- **Business Recommendations:** Three strategic considerations addressing pricing, genre development, and player satisfaction.
 
-The project ingests raw Steam marketplace data, executes SQL transformations, processes metrics via Python pipelines, and exports target datasets structured for BI reporting:
+The packaged Tableau workbook is also available in this repository:
 
-* `steam_data_cleaning.sql`: SQL scripts used for initial data extraction and transformation.
-* `steam_games_processed.csv`: Cleansed game-level dataset with calculated pricing tiers and retention metrics.
-* `price_tier_summary.csv`: Aggregated performance metrics binned by price bucket.
-* `genre_summary.csv`: Cross-sectional genre metrics evaluating player satisfaction vs. long-term retention.
+**[View Tableau Workbook](Steam_Market_Strategy.twbx)**
 
----
+## Business Recommendations
 
-## Tech Stack
+### 1. Pricing Strategy — Evaluate the $15–$30 Segment
 
-* **Database & Querying**: SQL
-* **Data Processing**: Python (Pandas, NumPy, Matplotlib/Seaborn)
-* **BI & Visualization**: Tableau Public (`.twbx`)
-* **Version Control**: Git, GitHub
+Games priced at $15–$30 demonstrate the highest engagement ratio (143.5) while maintaining a strong 79% positive review rate.
 
-## Business Context & Methodology
+**Business implication:** Developers should consider this segment when evaluating pricing strategies that balance engagement and player satisfaction, while accounting for differences in genre, game quality, and target audience.
 
-### 1. Problem & Objectives
-The primary goal of this analysis was to evaluate how paid pricing strategies impact game reception, initial launch momentum, and long-term player retention across the Steam catalog (excluding Free-to-Play titles). Specifically, the project focused on answering:
-* How do paid price tiers impact positive user review percentages and launch hype (measured via Peak Concurrent Users / Peak CCU)?
-* Does paying a premium price tier correlate with higher long-term player retention, or do mid-tier games hold higher sustained engagement?
-* Which specific game genres drive the strongest long-term player retention relative to overall catalog performance?
+### 2. Genre Strategy — Explore Adventure & RPG
 
-### 2. Data Pipeline & Data Cleaning (SQL & Python)
-* **Extraction & SQL Transformation (`steam_data_cleaning.sql`)**: 
-  * Cleaned raw marketplace records by filtering out unreleased titles, corrupted rating values, and zero-playtime entries.
-  * Aggregated user feedback metrics and computed custom retention proxies (average hours played relative to total catalog tenure).
-* **Exploratory Data Analysis & Feature Engineering (`.ipynb`)**:
-  * Utilized **Pandas** and **NumPy** to group game pricing into discrete bins (`> 4.99`, `5.00–$14.99`, `$15.00–$29.99`, `$30.00–$54.99`, `$55.00+`).
-  * Generated summary metrics saved to `price_tier_summary.csv` and `genre_summary.csv` for BI modeling.
-  * Rendered exploratory distributions using **Matplotlib** and **Seaborn** to validate visual relationships prior to dashboard construction.
+Adventure (195.4) and RPG (126.4) demonstrate strong engagement ratios alongside approximately 79–80% positive reviews.
 
-### 3. Key Analytical Insights
-**Price Tier vs. Retention Sweet Spot:** Refuted simple inverse linearity between price and engagement—median playtime remains low across all tiers, but mean playtime peaks in the **Lower Mid Tier ($15–$29.99)** at ~143 hours/peak user with ~79% positive sentiment. Higher price tiers ($55+) trigger higher expectations, dropping positive sentiment to ~68.76%.
-* **Hype Dynamics & Retention Metric Engineering:** Engineered two relative ratios (`hype_ratio` = `peak_ccu / total_reviews` and `retention_ratio` = `avg_hours_played / peak_ccu`) to evaluate engagement depth beyond surface-level review counts and launch excitement.
-* **Genre Category Winners:** Cleaned and unnested JSON-formatted genre strings (`UNNEST`, `STRING_TO_ARRAY`, string stripping), identifying **Adventure** (~195.38 retention ratio, ~80% positive rating) and **RPGs** (~126.43 retention ratio, ~79% positive rating) as top long-term engagement drivers.
-**Exponential Pricing Elasticity:** Player engagement scales sharply at higher price points, with premium titles ($30+) generating over 10x higher mean playtime than budget tiers, demonstrating strong buyer retention commitment[cite: 1, 3].
-* **High-Value Genre Strategy:** Strategic matrix mapping isolates RPG and Strategy mechanics as top-tier performers, consistently driving both high player retention ratios and positive sentiment[cite: 1].
+**Business implication:** These genres represent potential opportunities for future game development and market research. Developers can investigate competitive positioning and audience expectations before making portfolio decisions.
+
+### 3. Player Experience — Investigate Potential Satisfaction Risks
+
+Premium-priced games ($55+) average 69% positive reviews, while Massively Multiplayer games average 67%.
+
+**Business implication:** Developers should investigate potential satisfaction gaps across existing player bases and competing titles to identify opportunities for improvement before making pricing or portfolio decisions.
+
+## Technical Workflow
+
+### 1. Data Preparation — SQL
+
+- Structured raw Steam marketplace records into analysis-ready tables.
+- Converted and standardized fields for quantitative analysis.
+- Applied data-quality checks and prepared metrics for subsequent analysis.
+
+**File:** [`01_steam_data_preparation.sql`](01_steam_data_preparation.sql)
+
+### 2. Exploratory Analysis — SQL
+
+- Analyzed pricing distributions and player engagement across five price tiers.
+- Examined positive review percentages and concurrent player metrics.
+- Compared genre-level performance to identify opportunities and potential risks.
+
+**File:** [`02_steam_analysis.sql`](02_steam_analysis.sql)
+
+### 3. Exploratory Data Analysis — Python
+
+- Used Pandas and NumPy to process and analyze Steam marketplace data.
+- Examined relationships among pricing, engagement, and review sentiment.
+- Developed correlation heatmaps and scatterplots to explore patterns.
+- Exported processed datasets and summary tables for visualization.
+
+**File:** [`03_exploratory_eda.ipynb`](03_exploratory_eda.ipynb)
+
+### 4. Business Intelligence — Tableau
+
+- Developed an interactive dashboard comparing price-tier and genre performance.
+- Incorporated hover tooltips to display detailed metrics for individual categories.
+- Highlighted the $15–$30 pricing segment as a potential market opportunity.
+- Translated analytical findings into three business recommendations.
+
+**File:** [`Steam_Market_Strategy.twbx`](Steam_Market_Strategy.twbx)
+
+## Tools & Technologies
+
+| Tool | Application |
+|---|---|
+| SQL / PostgreSQL | Data preparation, querying, and exploratory analysis |
+| Python | Data processing and exploratory analysis |
+| Pandas & NumPy | Data manipulation and quantitative analysis |
+| Matplotlib & Seaborn | Statistical and exploratory visualizations |
+| Tableau Public | Interactive dashboard and business storytelling |
+| GitHub | Project documentation and version control |
+
+## Data & Methodology
+
+The analysis examines pricing, engagement, and review sentiment using Steam game-level records.
+
+**Price segments:** Under $5, $5–14.99, $15–29.99, $30–54.99, and $55+.
+
+**Engagement ratio:** An exploratory metric comparing average playtime with peak concurrent players. It is not a direct measure of player retention.
+
+**Positive review percentage:** The proportion of positive user reviews, used as an indicator of player satisfaction.
+
+**Limitations:** Findings describe associations rather than causal relationships. Differences in genre, release timing, audience size, and other factors may influence observed patterns. Genre categories may overlap, and the engagement ratio should be interpreted cautiously.
+
+## Repository Contents
+
+| File | Description |
+|---|---|
+| `01_steam_data_preparation.sql` | SQL data preparation |
+| `02_steam_analysis.sql` | SQL exploratory analysis |
+| `03_exploratory_eda.ipynb` | Python exploratory analysis and visualizations |
+| `steam_games_processed.csv` | Processed game-level dataset |
+| `price_tier_summary.csv` | Price-tier summary metrics |
+| `genre_summary.csv` | Genre-level summary metrics |
+| `Steam_Market_Strategy.twbx` | Tableau packaged workbook |
+
+## Project Takeaway
+
+This project strengthened my ability to connect technical analysis with business decision-making. Beyond exploring Steam marketplace data, I focused on translating quantitative findings into practical considerations for game pricing, portfolio strategy, and player experience.
+
+The project demonstrates an end-to-end analytics workflow, from data preparation and exploratory analysis to interactive visualization and business recommendations.
